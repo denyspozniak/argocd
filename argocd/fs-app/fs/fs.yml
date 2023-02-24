@@ -1,21 +1,25 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
-  name: fs-app-1
-  labels:
-    app: fs-app-1
+  name: freeswitch
+  namespace: default
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: fs-app-1
+      app: freeswitch
+  serviceName: freeswitch-svc
   template:
     metadata:
       labels:
-        app: fs-app-1
+        app: freeswitch
     spec:
       containers:
-      - name: nginx
-        image: nginx:latest
+      - name: freeswitch
+        image: safarov/freeswitch
         ports:
-        - containerPort: 80
+        - containerPort: 5060
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
