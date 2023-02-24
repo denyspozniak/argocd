@@ -1,8 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: my-app-1
+  name: fs-app-of-app
   namespace: argocd
+  labels:
+    team: VoIP
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
@@ -11,6 +13,11 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: argocd/my-apps/app-1
+    path: argocd/fs-apps/fs
     repoURL: https://github.com/denyspozniak/argocd.git
     targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions: []
