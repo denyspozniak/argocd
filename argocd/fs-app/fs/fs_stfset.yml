@@ -17,7 +17,7 @@ spec:
       containers:
       - name: freeswitch
         image: safarov/freeswitch
-        command: ["nohup sleep 300 >/dev/null &"]
+        #command: ["nohup sleep 300 >/dev/null &"]
         ports:
         - containerPort: 5060
         resources:
