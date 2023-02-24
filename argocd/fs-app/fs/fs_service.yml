@@ -4,7 +4,7 @@ metadata:
   labels:
     app: freeswitch
   name: freeswitch-svc
-  namespace: parloa
+  namespace: default
 spec:
   type: ClusterIP
   clusterIP: None
