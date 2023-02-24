@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: fs-app-of-app
+  name: fs-app
   namespace: argocd
   labels:
     team: VoIP
@@ -13,7 +13,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: argocd/fs-apps/fs
+    path: argocd/fs-app/fs
     repoURL: https://github.com/denyspozniak/argocd.git
     targetRevision: HEAD
   syncPolicy:
